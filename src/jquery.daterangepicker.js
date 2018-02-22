@@ -1254,27 +1254,6 @@
         function calcPosition() {
             if (!opt.inline) {
                 var offset = $(self).offset();
-                if ($(opt.container).css('position') == 'relative') {
-                    var containerOffset = $(opt.container).offset();
-                    var leftIndent = Math.max(0, offset.left + box.outerWidth() - $('body').width() + 16);
-                    box.css({
-                        top: offset.top - containerOffset.top + $(self).outerHeight() + 4,
-                        left: offset.left - containerOffset.left - leftIndent
-                    });
-                } else {
-                    if (offset.left < 460) //left to right
-                    {
-                        box.css({
-                            top: offset.top + $(self).outerHeight() + parseInt($('body').css('border-top') || 0, 10),
-                            left: offset.left
-                        });
-                    } else {
-                        box.css({
-                            top: offset.top + $(self).outerHeight() + parseInt($('body').css('border-top') || 0, 10),
-                            left: offset.left + $(self).width() - box.width() - 16
-                        });
-                    }
-                }
             }
         }
 
@@ -2155,27 +2134,6 @@
             if (opt.customTopBar) html += ' custom-topbar ';
             html += '">';
 
-            if (opt.showTopbar) {
-                html += '<div class="drp_top-bar">';
-
-                if (opt.customTopBar) {
-                    if (typeof opt.customTopBar == 'function') opt.customTopBar = opt.customTopBar();
-                    html += '<div class="custom-top">' + opt.customTopBar + '</div>';
-                } else {
-                    html += '<div class="normal-top">' +
-                        '<span class="selection-top">' + translate('selected') + ' </span> <b class="start-day">...</b>';
-                    if (!opt.singleDate) {
-                        html += ' <span class="separator-day">' + opt.separator + '</span> <b class="end-day">...</b> <i class="selected-days">(<span class="selected-days-num">3</span> ' + translate('days') + ')</i>';
-                    }
-                    html += '</div>';
-                    html += '<div class="error-top">error</div>' +
-                        '<div class="default-top">default</div>';
-                }
-
-                html += '<input type="button" class="apply-btn disabled' + getApplyBtnClass() + '" value="' + translate('apply') + '" />';
-                html += '</div>';
-            }
-
             var _colspan = opt.showWeekNumbers ? 6 : 5;
 
             var arrowPrev = '&lt;';
@@ -2184,16 +2142,19 @@
             var arrowNext = '&gt;';
             if (opt.customArrowNextSymbol) arrowNext = opt.customArrowNextSymbol;
 
-            html += '<div class="month-wrapper">' +
+            html += '<div class="bg-filter apply-btn disabled"></div>' +
+                '<div class="month-wrapper">' +
                 '   <table class="month1" cellspacing="0" border="0" cellpadding="0">' +
                 '       <thead>' +
                 '           <tr class="caption">' +
+                '   <th colspan="7"><h5 class="start-date">Start date</h5></th>' +
+                '   </tr><tr class="caption">' +
+                '               <th colspan="' + _colspan + '" class="month-name">' +
+                '               </th>' +
                 '               <th>' +
                 '                   <span class="prev">' +
                 arrowPrev +
                 '                   </span>' +
-                '               </th>' +
-                '               <th colspan="' + _colspan + '" class="month-name">' +
                 '               </th>' +
                 '               <th>' +
                 (opt.singleDate || !opt.stickyMonths ? '<span class="next">' + arrowNext + '</span>' : '') +
@@ -2205,14 +2166,15 @@
                 '   </table>';
 
             if (hasMonth2()) {
-                html += '<div class="gap">' + getGapHTML() + '</div>' +
-                    '<table class="month2" cellspacing="0" border="0" cellpadding="0">' +
+                html += '<div class="gap">' + getGapHTML() + '</div>' + '<table class="month2" cellspacing="0" border="0" cellpadding="0">' +
                     '   <thead>' +
-                    '   <tr class="caption">' +
+                    '   <tr>' +
+                    '   <th colspan="7"><h5 class="due-date">Due date</h5></th>' +
+                    '   </tr><tr class="caption">' +
+                    '       <th colspan="' + _colspan + '" class="month-name">' +
+                    '       </th>' +
                     '       <th>' +
                     (!opt.stickyMonths ? '<span class="prev">' + arrowPrev + '</span>' : '') +
-                    '       </th>' +
-                    '       <th colspan="' + _colspan + '" class="month-name">' +
                     '       </th>' +
                     '       <th>' +
                     '           <span class="next">' + arrowNext + '</span>' +
@@ -2226,6 +2188,7 @@
             }
             //+'</div>'
             html += '<div class="dp-clearfix"></div>' +
+                '<div><input type="button" class="apply-btn disabled" value="Save" /></div>' +
                 '<div class="time">' +
                 '<div class="time1"></div>';
             if (!opt.singleDate) {
