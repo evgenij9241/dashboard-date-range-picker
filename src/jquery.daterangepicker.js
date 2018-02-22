@@ -23,11 +23,11 @@
             "day": "Day",
             "days": "Days",
             "apply": "Close",
-            "week-1": "mo",
-            "week-2": "tu",
-            "week-3": "we",
-            "week-4": "th",
-            "week-5": "fr",
+            "week-1": "mon",
+            "week-2": "tue",
+            "week-3": "wed",
+            "week-4": "thu",
+            "week-5": "fri",
             "week-6": "sa",
             "week-7": "su",
             "week-number": "W",
@@ -2146,7 +2146,7 @@
                 '<div class="month-wrapper">' +
                 '   <table class="month1" cellspacing="0" border="0" cellpadding="0">' +
                 '       <thead>' +
-                '           <tr class="caption">' +
+                '           <tr>' +
                 '   <th colspan="7"><h5 class="start-date">Start date</h5></th>' +
                 '   </tr><tr class="caption">' +
                 '               <th colspan="' + _colspan + '" class="month-name">' +
