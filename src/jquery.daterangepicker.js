@@ -2166,7 +2166,7 @@
                 '   </table>';
 
             if (hasMonth2()) {
-                html += '<div class="gap">' + getGapHTML() + '</div>' + '<table class="month2" cellspacing="0" border="0" cellpadding="0">' +
+                html +=  '<table class="month2" cellspacing="0" border="0" cellpadding="0">' +
                     '   <thead>' +
                     '   <tr>' +
                     '   <th colspan="7"><h5 class="due-date">Due date</h5></th>' +
