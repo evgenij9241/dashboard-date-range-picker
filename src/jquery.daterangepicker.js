@@ -2149,15 +2149,13 @@
                 '           <tr>' +
                 '   <th colspan="7"><h5 class="start-date">Start date</h5></th>' +
                 '   </tr><tr class="caption">' +
-                '               <th colspan="' + _colspan + '" class="month-name">' +
+                '               <th colspan="3" class="month-name">' +
                 '               </th>' +
                 '               <th>' +
-                '                   <span class="prev">' +
-                arrowPrev +
-                '                   </span>' +
+                '                   <span class="prev"><svg version="1.1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><desc>Created with Sketch.</desc><g fill="none" fill-rule="evenodd"><g transform="translate(-2 -2)" fill="#1D1F22" fill-rule="nonzero"><g transform="translate(2 2)"><path d="m10 18c-4.4183 0-8-3.5817-8-8s3.5817-8 8-8c2.1217 0 4.1566 0.84285 5.6569 2.3431 1.5003 1.5003 2.3431 3.5351 2.3431 5.6569 0 4.4183-3.5817 8-8 8zm0-18c-5.5228-2.2204e-15 -10 4.4772-10 10-1.3323e-15 2.6522 1.0536 5.1957 2.9289 7.0711 1.8754 1.8754 4.4189 2.9289 7.0711 2.9289s5.1957-1.0536 7.0711-2.9289 2.9289-4.4189 2.9289-7.0711-1.0536-5.1957-2.9289-7.0711c-1.8754-1.8754-4.4189-2.9289-7.0711-2.9289z"/><polygon points="13.41 14.58 8.83 10 13.41 5.41 12 4 6 10 12 16"/></g></g></g></svg></span>' +
                 '               </th>' +
                 '               <th>' +
-                (opt.singleDate || !opt.stickyMonths ? '<span class="next">' + arrowNext + '</span>' : '') +
+                (opt.singleDate || !opt.stickyMonths ? '<span class="next"><svg version="1.1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><desc>Created with Sketch.</desc><g fill="none" fill-rule="evenodd"><g transform="translate(-2 -2)" fill="#1D1F22" fill-rule="nonzero"><g transform="translate(12 12) scale(-1 1) translate(-10 -10)"><path d="m10 18c-4.4183 0-8-3.5817-8-8s3.5817-8 8-8c2.1217 0 4.1566 0.84285 5.6569 2.3431 1.5003 1.5003 2.3431 3.5351 2.3431 5.6569 0 4.4183-3.5817 8-8 8zm0-18c-5.5228-2.2204e-15 -10 4.4772-10 10-1.3323e-15 2.6522 1.0536 5.1957 2.9289 7.0711 1.8754 1.8754 4.4189 2.9289 7.0711 2.9289s5.1957-1.0536 7.0711-2.9289 2.9289-4.4189 2.9289-7.0711-1.0536-5.1957-2.9289-7.0711c-1.8754-1.8754-4.4189-2.9289-7.0711-2.9289z"/><polygon points="13.41 14.58 8.83 10 13.41 5.41 12 4 6 10 12 16"/></g></g></g></svg></span>' : '') +
                 '               </th>' +
                 '           </tr>' +
                 '           <tr class="week-name">' + getWeekHead() +
@@ -2171,13 +2169,13 @@
                     '   <tr>' +
                     '   <th colspan="7"><h5 class="due-date">Due date</h5></th>' +
                     '   </tr><tr class="caption">' +
-                    '       <th colspan="' + _colspan + '" class="month-name">' +
+                    '       <th colspan="3" class="month-name">' +
                     '       </th>' +
                     '       <th>' +
-                    (!opt.stickyMonths ? '<span class="prev">' + arrowPrev + '</span>' : '') +
+                    (!opt.stickyMonths ? '<span class="prev"><svg version="1.1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><desc>Created with Sketch.</desc><g fill="none" fill-rule="evenodd"><g transform="translate(-2 -2)" fill="#1D1F22" fill-rule="nonzero"><g transform="translate(2 2)"><path d="m10 18c-4.4183 0-8-3.5817-8-8s3.5817-8 8-8c2.1217 0 4.1566 0.84285 5.6569 2.3431 1.5003 1.5003 2.3431 3.5351 2.3431 5.6569 0 4.4183-3.5817 8-8 8zm0-18c-5.5228-2.2204e-15 -10 4.4772-10 10-1.3323e-15 2.6522 1.0536 5.1957 2.9289 7.0711 1.8754 1.8754 4.4189 2.9289 7.0711 2.9289s5.1957-1.0536 7.0711-2.9289 2.9289-4.4189 2.9289-7.0711-1.0536-5.1957-2.9289-7.0711c-1.8754-1.8754-4.4189-2.9289-7.0711-2.9289z"/><polygon points="13.41 14.58 8.83 10 13.41 5.41 12 4 6 10 12 16"/></g></g></g></svg></span>' : '') +
                     '       </th>' +
                     '       <th>' +
-                    '           <span class="next">' + arrowNext + '</span>' +
+                    '           <span class="next"><svg version="1.1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><desc>Created with Sketch.</desc><g fill="none" fill-rule="evenodd"><g transform="translate(-2 -2)" fill="#1D1F22" fill-rule="nonzero"><g transform="translate(12 12) scale(-1 1) translate(-10 -10)"><path d="m10 18c-4.4183 0-8-3.5817-8-8s3.5817-8 8-8c2.1217 0 4.1566 0.84285 5.6569 2.3431 1.5003 1.5003 2.3431 3.5351 2.3431 5.6569 0 4.4183-3.5817 8-8 8zm0-18c-5.5228-2.2204e-15 -10 4.4772-10 10-1.3323e-15 2.6522 1.0536 5.1957 2.9289 7.0711 1.8754 1.8754 4.4189 2.9289 7.0711 2.9289s5.1957-1.0536 7.0711-2.9289 2.9289-4.4189 2.9289-7.0711-1.0536-5.1957-2.9289-7.0711c-1.8754-1.8754-4.4189-2.9289-7.0711-2.9289z"/><polygon points="13.41 14.58 8.83 10 13.41 5.41 12 4 6 10 12 16"/></g></g></g></svg></span>' +
                     '       </th>' +
                     '   </tr>' +
                     '   <tr class="week-name">' + getWeekHead() +
