@@ -1088,7 +1088,13 @@
                 var isMonth2 = $(self).parents('table').hasClass('month2');
                 var month = isMonth2 ? opt.month2 : opt.month1;
                 month = nextMonth(month);
-                if (!opt.singleMonth && !opt.singleDate && !isMonth2 && compare_month(month, opt.month2) >= 0 || isMonthOutOfBounds(month)) return;
+                console.log(opt.singleMonth);
+                console.log(opt.singleDate);
+                console.log(isMonth2);
+                console.log(compare_month(month, opt.month2));
+                console.log((!opt.singleMonth && !opt.singleDate && !isMonth2 && compare_month(month, opt.month2) >= 1 || isMonthOutOfBounds(month)));
+                console.log('dddddd11');
+                if (false) return;
                 showMonth(month, isMonth2 ? 'month2' : 'month1');
                 showGap();
             }
@@ -1097,7 +1103,7 @@
                 var nextMonth1 = nextMonth(opt.month1);
                 var nextMonth2 = nextMonth(opt.month2);
                 if (isMonthOutOfBounds(nextMonth2)) return;
-                if (!opt.singleDate && compare_month(nextMonth1, nextMonth2) >= 0) return;
+                if (!opt.singleDate && compare_month(nextMonth1, nextMonth2) >= 1) return;
                 showMonth(nextMonth1, 'month1');
                 showMonth(nextMonth2, 'month2');
                 showSelectedDays();
@@ -1105,6 +1111,7 @@
 
 
             box.find('.prev').click(function() {
+                console.log('asdasd');
                 if (!opt.stickyMonths)
                     gotoPrevMonth(this);
                 else
@@ -1112,10 +1119,12 @@
             });
 
             function gotoPrevMonth(self) {
+                console.log('ddddd')
                 var isMonth2 = $(self).parents('table').hasClass('month2');
                 var month = isMonth2 ? opt.month2 : opt.month1;
                 month = prevMonth(month);
-                if (isMonth2 && compare_month(month, opt.month1) <= 0 || isMonthOutOfBounds(month)) return;
+                if (isMonth2 && compare_month(month, opt.month1) <= -1 || isMonthOutOfBounds(month)) return;
+                console.log('+++++++++++')
                 showMonth(month, isMonth2 ? 'month2' : 'month1');
                 showGap();
             }
@@ -1124,7 +1133,7 @@
                 var prevMonth1 = prevMonth(opt.month1);
                 var prevMonth2 = prevMonth(opt.month2);
                 if (isMonthOutOfBounds(prevMonth1)) return;
-                if (!opt.singleDate && compare_month(prevMonth2, prevMonth1) <= 0) return;
+                if (!opt.singleDate && compare_month(prevMonth2, prevMonth1) <= -1) return;
                 showMonth(prevMonth2, 'month2');
                 showMonth(prevMonth1, 'month1');
                 showSelectedDays();
@@ -1798,7 +1807,7 @@
             if (!valid) {
                 showMonth(opt.startDate, 'month1');
                 showMonth(nextMonth(opt.startDate), 'month2');
-                showGap();
+                w;
                 return;
             }
 
@@ -2056,7 +2065,7 @@
             var m1 = parseInt(moment(opt.month1).format('YYYYMM'));
             var m2 = parseInt(moment(opt.month2).format('YYYYMM'));
             var p = Math.abs(m1 - m2);
-            var shouldShow = (p > 1 && p != 89);
+            var shouldShow = (p > 0 && p != 89);
             if (shouldShow) {
                 box.addClass('has-gap').removeClass('no-gap').find('.gap').css('visibility', 'visible');
             } else {
@@ -2149,7 +2158,7 @@
                 '           <tr>' +
                 '   <th colspan="7"><h5 class="start-date">Start date</h5></th>' +
                 '   </tr><tr class="caption">' +
-                '               <th colspan="3" class="month-name">' +
+                '               <th colspan="5" class="month-name">' +
                 '               </th>' +
                 '               <th>' +
                 '                   <span class="prev"><svg version="1.1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><desc>Created with Sketch.</desc><g fill="none" fill-rule="evenodd"><g transform="translate(-2 -2)" fill="#1D1F22" fill-rule="nonzero"><g transform="translate(2 2)"><path d="m10 18c-4.4183 0-8-3.5817-8-8s3.5817-8 8-8c2.1217 0 4.1566 0.84285 5.6569 2.3431 1.5003 1.5003 2.3431 3.5351 2.3431 5.6569 0 4.4183-3.5817 8-8 8zm0-18c-5.5228-2.2204e-15 -10 4.4772-10 10-1.3323e-15 2.6522 1.0536 5.1957 2.9289 7.0711 1.8754 1.8754 4.4189 2.9289 7.0711 2.9289s5.1957-1.0536 7.0711-2.9289 2.9289-4.4189 2.9289-7.0711-1.0536-5.1957-2.9289-7.0711c-1.8754-1.8754-4.4189-2.9289-7.0711-2.9289z"/><polygon points="13.41 14.58 8.83 10 13.41 5.41 12 4 6 10 12 16"/></g></g></g></svg></span>' +
@@ -2169,7 +2178,7 @@
                     '   <tr>' +
                     '   <th colspan="7"><h5 class="due-date">Due date</h5></th>' +
                     '   </tr><tr class="caption">' +
-                    '       <th colspan="3" class="month-name">' +
+                    '       <th colspan="5" class="month-name">' +
                     '       </th>' +
                     '       <th>' +
                     (!opt.stickyMonths ? '<span class="prev"><svg version="1.1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><desc>Created with Sketch.</desc><g fill="none" fill-rule="evenodd"><g transform="translate(-2 -2)" fill="#1D1F22" fill-rule="nonzero"><g transform="translate(2 2)"><path d="m10 18c-4.4183 0-8-3.5817-8-8s3.5817-8 8-8c2.1217 0 4.1566 0.84285 5.6569 2.3431 1.5003 1.5003 2.3431 3.5351 2.3431 5.6569 0 4.4183-3.5817 8-8 8zm0-18c-5.5228-2.2204e-15 -10 4.4772-10 10-1.3323e-15 2.6522 1.0536 5.1957 2.9289 7.0711 1.8754 1.8754 4.4189 2.9289 7.0711 2.9289s5.1957-1.0536 7.0711-2.9289 2.9289-4.4189 2.9289-7.0711-1.0536-5.1957-2.9289-7.0711c-1.8754-1.8754-4.4189-2.9289-7.0711-2.9289z"/><polygon points="13.41 14.58 8.83 10 13.41 5.41 12 4 6 10 12 16"/></g></g></g></svg></span>' : '') +
