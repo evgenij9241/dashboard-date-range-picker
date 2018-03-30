@@ -1096,9 +1096,10 @@
                     showMonth(month, 'month2');
                 }
                 else {
-                    //to do
                     showMonth(month, 'month1');
-                    showMonth(month, 'month2');
+                    if (parseInt(moment(month).format('YYYYMM')) > parseInt(moment(opt.month2).format('YYYYMM'))) {
+                        showMonth(month, 'month2');
+                    }
                 }
                 showGap();
             }
@@ -1115,7 +1116,6 @@
 
 
             box.find('.prev').click(function () {
-                console.log('asdasd');
                 if (!opt.stickyMonths)
                     gotoPrevMonth(this);
                 else
@@ -1151,11 +1151,31 @@
             box.find('.apply-btn').click(function () {
                 closeDatePicker();
                 var dateRange = getDateString(new Date(opt.start)) + opt.separator + getDateString(new Date(opt.end));
+                console.log(dateRange);
+
+                if (opt.start == false) {
+                    var date_1 = false;
+                }
+                else {
+                    var date_1 = new Date(opt.start);
+                }
+
+                if (opt.end == false) {
+                    var date_2 = false;
+                }
+                else {
+                    var date_2 = new Date(opt.end);
+                }
+                console.log('start ' + date_1);
+                console.log('final ' + date_2);
                 $(self).trigger('datepicker-apply', {
                     'value': dateRange,
-                    'date1': new Date(opt.start),
-                    'date2': new Date(opt.end)
+                    'date1': date_1,
+                    'date2': date_2
                 });
+            });
+            box.find('.clear-btn').click(function () {
+                clearSelection();
             });
 
             box.find('[custom]').click(function () {
@@ -1406,7 +1426,6 @@
         }
 
         function handleStart(time) {
-            console.log('ddd+++++');
             var r = time;
             if (opt.batchMode === 'week-range') {
                 if (opt.startOfWeek === 'monday') {
@@ -1461,9 +1480,7 @@
             //In case the start is after the end, swap the timestamps
             if (!opt.singleDate && opt.start && opt.end && opt.start > opt.end) {
                 opt.start = handleStart(time);
-                console.log(time);
                 time = parseInt(time) + 86400000;
-                console.log(time);
                 opt.end = handleStart(time);
             }
 
@@ -1802,6 +1819,7 @@
         function setDateRange(date1, date2, silent) {
             if (date1.getTime() > date2.getTime()) {
                 var tmp = date2;
+
                 date2 = date1;
                 date1 = tmp;
                 tmp = null;
@@ -1818,7 +1836,6 @@
 
             opt.start = date1.getTime();
             opt.end = date2.getTime();
-
             if (opt.time.enabled) {
                 renderTime('time1', date1);
                 renderTime('time2', date2);
@@ -1836,17 +1853,6 @@
                 date1 = prevMonth(date1);
                 date2 = prevMonth(date2);
             }
-
-            if (!opt.stickyMonths) {
-                if (compare_month(date1, date2) === 0) {
-                    if (opt.lookBehind) {
-                        date1 = prevMonth(date2);
-                    } else {
-                        date2 = nextMonth(date1);
-                    }
-                }
-            }
-
             showMonth(date1, 'month1');
             showMonth(date2, 'month2');
             showGap();
@@ -2077,7 +2083,7 @@
             var m1 = parseInt(moment(opt.month1).format('YYYYMM'));
             var m2 = parseInt(moment(opt.month2).format('YYYYMM'));
             var p = Math.abs(m1 - m2);
-            var shouldShow = (p > 0 && p != 89);
+            var shouldShow = (p > 0);
             if (shouldShow) {
                 box.addClass('has-gap').removeClass('no-gap').find('.gap').css('visibility', 'visible');
             } else {
@@ -2208,6 +2214,7 @@
             //+'</div>'
             html += '<div class="dp-clearfix"></div>' +
                 '<div><input type="button" class="apply-btn disabled" value="Save" /></div>' +
+                '<div><input type="button" class="clear-btn disabled" value="Clear" /></div>' +
                 '<div class="time">' +
                 '<div class="time1"></div>';
             if (!opt.singleDate) {
