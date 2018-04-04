@@ -1151,7 +1151,6 @@
             box.find('.apply-btn').click(function () {
                 closeDatePicker();
                 var dateRange = getDateString(new Date(opt.start)) + opt.separator + getDateString(new Date(opt.end));
-                console.log(dateRange);
 
                 if (opt.start == false) {
                     var date_1 = false;
@@ -1166,8 +1165,6 @@
                 else {
                     var date_2 = new Date(opt.end);
                 }
-                console.log('start ' + date_1);
-                console.log('final ' + date_2);
                 $(self).trigger('datepicker-apply', {
                     'value': dateRange,
                     'date1': date_1,
@@ -1175,7 +1172,6 @@
                 });
             });
             box.find('.bg-filter').click(function () {
-                console.log('ddddasdasdsadd');
                 closeDatePicker();
             });
 
