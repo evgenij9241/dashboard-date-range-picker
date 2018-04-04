@@ -1174,6 +1174,11 @@
                     'date2': date_2
                 });
             });
+            box.find('.bg-filter').click(function () {
+                console.log('ddddasdasdsadd');
+                closeDatePicker();
+            });
+
             box.find('.clear-btn').click(function () {
                 clearSelection();
             });
@@ -2169,7 +2174,7 @@
             var arrowNext = '&gt;';
             if (opt.customArrowNextSymbol) arrowNext = opt.customArrowNextSymbol;
 
-            html += '<div class="bg-filter apply-btn disabled"></div>' +
+            html += '<div class="bg-filter"></div>' +
                 '<div class="month-wrapper">' +
                 '   <table class="month1" cellspacing="0" border="0" cellpadding="0">' +
                 '       <thead>' +
